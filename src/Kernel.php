@@ -45,9 +45,20 @@ class Kernel
 
         $twig->addGlobal('app', ['flashes' => $session->getFlashBag()->all()]);
 
-        $route1 = new Route('/admin/properties', ['_controller' => \App\Controller\AbstractController::class, '_method' => 'index']);
+        $twig->addGlobal('app', ['flashes' => $session->getFlashBag()->all()]);
+
+        $route1 = new Route('/admin/properties', ['_controller' => \App\Controller\AdminPropertyController::class, '_method' => 'index']);
+        $route2 = new Route('/admin/properties/create', ['_controller' => \App\Controller\AdminPropertyController::class, '_method' => 'create']);
+        $route3 = new Route('/admin/properties/{id}/edit', ['_controller' => \App\Controller\AdminPropertyController::class, '_method' => 'edit']);
+        $route4 = new Route('/admin/properties/{id}/delete', ['_controller' => \App\Controller\AdminPropertyController::class, '_method' => 'delete']);
+        $route5 = new Route('/admin/properties/import', ['_controller' => \App\Controller\AdminPropertyImportController::class, '_method' => 'import']);
+
         $routes = new RouteCollection();
         $routes->add('admin_properties', $route1);
+        $routes->add('admin_properties_create', $route2);
+        $routes->add('admin_properties_edit', $route3);
+        $routes->add('admin_properties_delete', $route4);
+        $routes->add('admin_properties_import', $route5);
 
         $this->routes = $routes;
 
