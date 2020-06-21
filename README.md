@@ -12,6 +12,14 @@ Create a database and add the details in the .env file and run the sql statement
 
 Run composer install
 Run npm install
+Run npm run dev to build the assets.
+
+
+
+Routes:
+
+/admin/properties/import
+/admin/properties
 
 
 #### SQL
