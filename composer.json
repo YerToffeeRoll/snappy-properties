@@ -1,0 +1,12 @@
+{
+    "name": "yertoffeeroll/snappy-properties",
+    "type": "project",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Sam Killen",
+            "email": "sam@regalmajestic.co.uk"
+        }
+    ],
+    "require": {}
+}
