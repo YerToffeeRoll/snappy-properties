@@ -1,0 +1,37 @@
+App\Entity\Property:
+    properties:
+        county:
+            - NotBlank: ~
+        country:
+            - NotBlank: ~
+        town:
+            - NotBlank: ~
+        postcode:
+            - NotBlank: ~
+        address:
+            - NotBlank: ~
+        description:
+            - NotBlank: ~
+        imageFull:
+            - Image:
+                minWidth: 200
+                minHeight: 200
+        numBedrooms:
+            - Type:
+                type: integer
+        numBathrooms:
+            - Type:
+                type: integer
+        price:
+            - Positive: ~
+            - Type:
+                  type: integer
+        propertyType:
+            - NotBlank: ~
+
+App\Entity\PropertyType:
+    properties:
+        title:
+            - NotBlank: ~
+        description:
+            - NotBlank: ~
