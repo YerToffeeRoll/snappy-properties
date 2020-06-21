@@ -1,0 +1,130 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container mt-5 mb-5">
+        {% include 'snippets/_flash-messages.html.twig' %}
+
+        {% set action = property.id is defined ? '/admin/properties/' ~ property.id ~ '/edit' : '/admin/properties/create' %}
+
+        <form action="{{ action }}" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <div class="form-check form-check-inline">
+                    <input type="radio" class="form-check-input{{ errors.type is defined ? ' is-invalid' : '' }}" name="type" value="sale" {{ property.type|default('sale') == 'sale' ? 'checked' : '' }}>
+                    <label for="type" class="form-check-label">For sale</label>
+                </div>
+
+                <div class="form-check form-check-inline">
+                    <input type="radio" class="form-check-input {{ errors.type is defined ? ' is-invalid' : '' }}" name="type" value="rent" {{ property.type|default('sale') == 'rent' ? 'checked' : '' }}>
+                    <label for="type" class="form-check-label">For rent</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="propertyType">Property Type</label>
+                <select name="propertyType" class="form-control{{ errors.propertyType is defined ? ' is-invalid' : '' }}">
+                    {% for type in propertyTypes %}
+                        <option value="{{ type.id }}" {{ property.propertyType.id|default(0) == type.id ? 'selected' : '' }}>{{ type.title }}</option>
+                    {% endfor %}
+                </select>
+                <div class="invalid-feedback">
+                    {{ errors.propertyType }}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="county">County</label>
+                <input type="text" class="form-control{{ errors.county is defined ? ' is-invalid' : '' }}" name="county" value="{{ property.county|default('') }}">
+                <div class="invalid-feedback">
+                    {{ errors.county }}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="country">Country</label>
+                <input type="text" class="form-control{{ errors.country is defined ? ' is-invalid' : '' }}" name="country" value="{{ property.country|default('') }}">
+                <div class="invalid-feedback">
+                    {{ errors.country }}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="town">Town</label>
+                <input type="text" class="form-control{{ errors.town is defined ? ' is-invalid' : '' }}" name="town" value="{{ property.town|default('') }}">
+                <div class="invalid-feedback">
+                    {{ errors.town }}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="postcode">Postcode</label>
+                <input type="text" class="form-control{{ errors.postcode is defined ? ' is-invalid' : '' }}" name="postcode" value="{{ property.postcode|default('') }}">
+                <div class="invalid-feedback">
+                    {{ errors.postcode }}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="address">Displayable Address</label>
+                <textarea name="address" class="form-control {{ errors.address is defined ? ' is-invalid' : '' }}">{{ property.address|default('') }}</textarea>
+                <div class="invalid-feedback">
+                    {{ errors.address }}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea name="description" class="form-control{{ errors.description is defined ? ' is-invalid' : '' }}">{{ property.description|default('') }}</textarea>
+                <div class="invalid-feedback">
+                    {{ errors.description }}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="custom-file">
+                    <input type="file" id="customFile" class="custom-file-input{{ errors.imageFull is defined ? ' is-invalid' : '' }}" name="imageFull" value="{{ property.imageFull|default }}">
+                    <label for="imageFull" class="custom-file-label">Choose Image</label>
+                </div>
+                <div class="invalid-feedback">
+                    {{ errors.imageFull }}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="numBedrooms">Number of Bedrooms</label>
+                <select name="numBedrooms" class="form-control{{ errors.numBedrooms is defined ? ' is-invalid' : '' }}">
+                    {% for i in range(0, 10) %}
+                        <option value="{{ i }}" {{ property.numBedrooms|default(0) == i ? 'selected' : '' }}>{{ i }}</option>
+                    {% endfor %}
+                </select>
+                <div class="invalid-feedback">
+                    {{ errors.numBedrooms }}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="numBathrooms">Number of Bathrooms</label>
+                <select name="numBathrooms" class="form-control{{ errors.numBathrooms is defined ? ' is-invalid' : '' }}">
+                    {% for i in range(0, 10) %}
+                        <option value="{{ i }}" {{ property.numBathrooms|default(0) == i ? 'selected' : '' }}>{{ i }}</option>
+                    {% endfor %}
+                </select>
+                <div class="invalid-feedback">
+                    {{ errors.numBathrooms }}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="price">Price</label>
+                <input type="text" class="form-control{{ errors.price is defined ? ' is-invalid' : '' }}" name="price" value="{{ property.price|default(0) }}">
+                <div class="invalid-feedback">
+                    {{ errors.price }}
+                </div>
+            </div>
+
+            <div class="form-group">
+                <a href="/admin/properties" class="btn btn-dark">Back</a>
+                <button type="submit" class="btn btn-dark">Submit</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}
