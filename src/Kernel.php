@@ -45,6 +45,12 @@ class Kernel
 
         $twig->addGlobal('app', ['flashes' => $session->getFlashBag()->all()]);
 
+        $route1 = new Route('/admin/properties', ['_controller' => \App\Controller\AbstractController::class, '_method' => 'index']);
+        $routes = new RouteCollection();
+        $routes->add('admin_properties', $route1);
+
+        $this->routes = $routes;
+
     }
 
     /**
