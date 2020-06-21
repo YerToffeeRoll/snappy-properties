@@ -5,7 +5,7 @@ Property System - A task to showcase my PHP, MySQL and Javascript skills.
 
 #### Requirements
 PHP 7.4
-MYSQL 8.0
+MYSQL 5.7
 
 #### Installation
 Create a database and add the details in the .env file and run the sql statements below.
@@ -15,12 +15,18 @@ Run npm install
 Run npm run dev to build the assets.
 
 
+Go to "http://<your-domain>/admin/properties/import"
+
+This will import the proprty data to the database.
+
 
 Routes:
 
-/admin/properties/import
 /admin/properties
-
+/admin/properties/create
+/admin/properties/{id}/edit
+/admin/properties/{id}/delete
+/admin/properties/import
 
 #### SQL
 
