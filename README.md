@@ -15,17 +15,21 @@ Run npm install
 Run npm run dev to build the assets.
 
 
-Go to "http://<your-domain>/admin/properties/import"
+Go to "http://your-domain/admin/properties/import"
 
-This will import the proprty data to the database.
+This will import the property data to the database.
 
 
 Routes:
 
 /admin/properties
+
 /admin/properties/create
+
 /admin/properties/{id}/edit
+
 /admin/properties/{id}/delete
+
 /admin/properties/import
 
 #### Future work
